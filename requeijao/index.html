@@ -8,6 +8,29 @@
     .container {
       padding: 20px 10px;
     }
+
+    .video-column {
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 17px;
+    }
+    .video-wrapper {
+      overflow: hidden;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      left: 12px;
+    }
+
+    .video-wrapper video {
+      margin-top: -27px;
+    }
+
+    @media (max-width: 768px) {
+      .video-column {
+        min-height: 500px;
+      }
+    }
   </style>
   <script>
     let isOpen = false;
@@ -80,11 +103,17 @@
         <p class="has-text-centered"><i>Imagens do requeijão vegano - Sugestões de uso - Fotos independentes</i></p>
       <hr>
       <div class="columns">
-        <div class="column">
-          <img src="../images/requeijao-de-castanha-1.jpg">
+        <div class="column video-column">
+          <div class="video-wrapper">
+            <video width="100%" autoplay loop>
+              <source src="../images/requeijao-de-castanha.mp4" type="video/mp4">
+              <source src="../images/requeijao-de-castanha.ogg" type="video/ogg">
+              Infelizmente seu navegador não suporta vídeos.
+            </video>
+          </div>
         </div>
         <div class="column">
-          <img src="../images/requeijao-de-castanha-2.jpg">
+          <img src="../images/requeijao-de-castanha-4.jpg">
         </div>
         <div class="column">
           <img src="../images/requeijao-de-castanha-3.jpg">
@@ -92,13 +121,24 @@
       </div>
       <div class="columns">
         <div class="column">
-          <img src="../images/requeijao-de-castanha-4.jpg">
-        </div>
-        <div class="column">
           <img src="../images/requeijao-de-castanha-5.jpg">
         </div>
         <div class="column">
+          <img src="../images/requeijao-de-castanha-2.jpg">
+        </div>
+        <div class="column">
           <img src="../images/requeijao-de-castanha-6.jpg">
+        </div>
+      </div>
+      <div class="columns video-columns">
+        <div class="column">
+          <img src="../images/requeijao-de-castanha-7.jpg">
+        </div>
+        <div class="column">
+          <img src="../images/requeijao-de-castanha-8.jpg">
+        </div>
+        <div class="column">
+          <img src="../images/requeijao-de-castanha-1.jpg">
         </div>
       </div>
       <hr>
