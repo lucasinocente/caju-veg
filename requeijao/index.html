@@ -26,22 +26,72 @@
       margin-top: -27px;
     }
 
+    .modal-content,
+    .modal-card {
+      width: auto;
+      max-width: 420px;
+    }
+    
+    .buttons {
+      width: 100%;
+    }
+
     @media (max-width: 768px) {
       .video-column {
         min-height: 500px;
       }
     }
   </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
+
   <script>
     let isOpen = false;
+    window.isMobile = isMobile.any;
 
-    const handleMenu = () => {
-      const menu = document.getElementById("navbar-menu");
+    const handleDisplay = id => {
+      const menu = document.getElementById(id);
       isOpen = !isOpen;
 
       return isOpen
-        ? menu.style.display = 'block'
+        ? menu.style.display = id === 'order-modal' ? 'flex' : 'block'
         : menu.style.display = 'none';
+    }
+
+    const sendAnalyticsEvent = (event, label) => {
+      return gtag('event', event, {
+        'event_category' : 'Encomenda',
+        'event_label' : label
+      });
+    }
+
+    const buildMessage = ({ name, quantity }) => {
+      return `Oiê Caju! ${ name
+          ? `Meu nome é ${name}. `
+          : ''
+        }Gostaria de encomendar ${
+          quantity === 1
+            ? '1 requeijão vegano.'
+            : `${quantity} requeijões veganos.`
+        }`
+    }
+
+    const submitOrder = (event) => {
+      event.preventDefault();
+
+      const orderDetails = {
+        name: event.target[0].value,
+        quantity: Number(event.target[1].value)
+      };
+
+      const message = buildMessage(orderDetails);
+
+      return window.location.href = 
+        `https://${
+          window.isMobile
+            ? 'api' 
+            : 'web'
+        }.whatsapp.com/send?phone=5551983320104&text=${message}`
     }
   </script>
 </head>
@@ -51,13 +101,22 @@
     <a class="navbar-item" href="/">
       <strong>Caju Cozinha Independente</strong>
     </a>
-    <a onClick="handleMenu()" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+    <a
+      onClick="handleDisplay('navbar-menu')"
+      class="navbar-burger"
+      role="button"
+      aria-label="menu"
+      aria-expanded="false"
+    >
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
-  <div class="navbar-menu has-text-centered" id="navbar-menu">
+  <div
+    id="navbar-menu"
+    class="navbar-menu has-text-centered"
+  >
     <div class="navbar-end">
       <a class="navbar-item" href="/">
         Manifesto
@@ -80,15 +139,17 @@
               <img src="../images/requeijao-castanha-principal.jpg">
             </div>
             <div class="column">
-              <h3 class="has-text-centered">Feito de castanha de caju e aipim, cremoso e sem conservantes.</h3>
+              <h3 class="has-text-centered">
+                Feito de castanha de caju e aipim, cremoso e sem conservantes.
+              </h3>
               <hr>
               <p class="has-text-centered">
-                <a
-                  href="https://api.whatsapp.com/send?phone=5551983320104&text=Oiê Caju! Gostaria de encomendar requeijão vegano."
+                <span
+                  onClick="handleDisplay('order-modal'), sendAnalyticsEvent('Abre Modal Pedido', 'Abre Modal Pedido Requeijão')"
                   class="button is-success is-medium"
                 >
                   Peça o seu aqui
-                </a>
+                </span>
               </p>
               <hr>
               <p>Vai bem se utilizado frio ou quente, no pão ou na pizza, na lasanha ou nos legumes.</p>
@@ -145,6 +206,50 @@
       <p class="has-text-centered">Saiba mais, leia o <a href="/">manifesto da Caju Cozinha Independente</a>.</p>
     </div>
   </div>
+</div>
+
+<div
+  id="order-modal"
+  class="modal"
+>
+  <div
+    onClick="handleDisplay('order-modal')"
+    class="modal-background"
+  ></div>
+  <div class="modal-content">
+    <div class="modal-card">
+      <form onSubmit="sendAnalyticsEvent('Realiza Pedido', 'Realiza Pedido Requeijão'), submitOrder(event)">
+        <div class="modal-card-head">
+          <h4 class="modal-card-title">Encomende o seu:</h4>
+        </div>
+        <div class="modal-card-body">
+          <div class="field">
+            <p>Olá! Por favor, preencha os campos abaixo para fazer seu pedido via WhatsApp:</p>
+          </div>
+          <div class="field">
+            <label class="label">Seu nome:</label>
+            <input class="input" type="text" name="name" />
+          </div>
+          <div class="field">
+            <label class="label">Quantidade</label>
+            <input class="input" type="number" value="1" min="1" name="quantidade" validate/>
+          </div>
+        </div>
+        <div class="modal-card-foot">
+          <div class="buttons is-right">
+            <button class="button is-success">
+              Fazer pedido
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <button
+    onClick="handleDisplay('order-modal')"
+    class="modal-close is-large"
+    aria-label="close"
+  ></button>
 </div>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172898631-1"></script>
