@@ -1,0 +1,21 @@
+.navbar {
+  border-bottom: 3px solid #F6A32A;
+}
+
+.navbar-item img {
+  max-height: 100px;
+  height: 89px;
+}
+
+.navbar-burger {
+  height: 105px;
+}
+
+.is-success {
+  background: #E1571D !important;
+}
+
+hr.styled {
+  background: url(../images/bg-title.png) !important;
+  height: 10px !important;
+}
