@@ -1,0 +1,18 @@
+$primary: #F6A32A;
+
+.input[readonly] {
+  background: #eee;
+  cursor: not-allowed;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@import "../../node_modules/bulma/bulma.sass";
