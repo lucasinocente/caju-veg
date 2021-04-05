@@ -13,7 +13,7 @@
   });
 </script>
 
-<Page title="Páginas Caju Cozinha Independente">
+<Page title="Páginas">
   <div class="box">
     <TabelaPaginas { list }/>
   </div>

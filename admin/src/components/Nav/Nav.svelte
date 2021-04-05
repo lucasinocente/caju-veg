@@ -25,6 +25,14 @@
       class:is-active={isActive}
       class="navbar-end navbar-menu"
     >
+      <a class="navbar-item" href="/#/painel/imagens/criar">
+        <strong>
+          + Nova Imagem
+        </strong>
+      </a>
+      <a class="navbar-item" href="/#/painel/imagens">
+        Imagens
+      </a>
       <a class="navbar-item" href="/#/painel/paginas/criar">
         <strong>
           + Nova Página

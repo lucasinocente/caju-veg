@@ -1,5 +1,5 @@
 import { Firestore } from '../Firebase';
-import { paginas } from '../store/store.js';
+import { paginas, imagens } from '../store/store.js';
 
 const criaPagina = async pagina => {
   return Firestore.collection("paginas")
@@ -56,9 +56,68 @@ const editaPagina = async pagina => {
   }
 }
 
+const criaImagem = async imagem => {
+  return Firestore.collection("imagens")
+    .add(
+      {
+        ...imagem,
+        createdAt: Date.now()
+      }
+    );
+}
+
+const listaImagens = async () => {
+  Firestore
+    .collection("imagens")
+    .orderBy("createdAt", "asc")
+    .get()
+    .then(function(snap) {
+      let list = [];
+      snap.forEach(
+        doc => list.push(
+          {
+            id: doc.id,
+            ...doc.data()
+          }
+        )
+      );
+      imagens.set(list);
+    }
+  );
+}
+
+const carregaImagem = async id => {
+  try {
+    return Firestore.collection("imagens").doc(id).get().then(
+      doc => {
+        return {
+          id: doc.id,
+          ...doc.data()
+        }
+      }
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const editaImagem = async imagem => {
+  try {
+    return Firestore.collection("imagens")
+      .doc(imagem.id)
+      .update(imagem);
+  } catch (error) {
+    throw error;
+  }
+}
+
 export {
   criaPagina,
   listaPaginas,
   carregaPagina,
-  editaPagina
+  editaPagina,
+  criaImagem,
+  listaImagens,
+  carregaImagem,
+  editaImagem
 };

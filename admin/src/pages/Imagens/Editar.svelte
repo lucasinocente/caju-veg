@@ -1,18 +1,27 @@
 <script>
-  import { criaPagina } from '../../actions/database.js';
+  import { onMount } from 'svelte';
+  import { carregaImagem, editaImagem, listaPaginas } from '../../actions/database.js';
   import { upload } from '../../actions/upload.js';
+  import { paginas } from '../../store/store.js';
 
   import Page from "../../containers/Page/Page.svelte";
   import Modal from "../../components/Modal/Modal.svelte";
   import Field from "../../components/Field/Field.svelte";
 
-  let pagina = {
-    ativo: false
-  };
+  export let params = {}
+
+  $: listPaginas = $paginas;
+
+  let imagem = {};
   let alert;
   let files;
   let uploading;
   let error;
+
+  onMount(async () => {
+    imagem = await carregaImagem(params.id);
+    listaPaginas();
+  });
 
   const handleUpload = async () => {
     error = null;
@@ -21,17 +30,17 @@
       return;
     }
     uploading = true;
-    pagina.imagem = await upload(files[0]);
+    imagem.imagem = await upload(files[0]);
     uploading = false;
   }
 
-  const handleCreate = async () => {
-    alert = "Adicionando...";
+  const handleEdit = async () => {
+    alert = "Atualizando...";
     try {
-      await criaPagina(pagina);
-      alert = "Página adicionada!";
+      await editaImagem(imagem);
+      alert = "Imagem atualizada!";
     } catch (error) {
-      alert = `Erro ao adicionar página: ${error}`;
+      alert = `Erro ao atualizar a imagem: ${error}`;
     }
   }
 
@@ -45,31 +54,33 @@
   />
 {/if}
 
-<Page title="Criar Página">
+{#if imagem}
+<Page title="Editar Imagem">
   <div class="box">
     <div class="field is-horizontal">
       <div class="content">
-        <h3>Informações da página:</h3>
+        <h3>Informações da imagem:</h3>
       </div>
     </div>
     <Field label="Ativa">
       <div class="select">
-        <select bind:value={pagina.ativo}>
+        <select bind:value={imagem.ativo}>
           <option value={false}>Não</option>
           <option value={true}>Sim</option>
         </select>
       </div>
     </Field>
-    <Field label="Seção">
+    <Field label="Página">
       <div class="select">
-        <select bind:value={pagina.secao}>
-          <option value="produtos">Produtos</option>
-          <option value="como-funciona">Como Funciona</option>
+        <select bind:value={imagem.pagina}>
+          {#each listPaginas as pagina}
+            <option value={pagina}>{pagina.titulo}</option>
+          {/each}
         </select>
       </div>
     </Field>
-    <Field label="Título">
-      <input bind:value={pagina.titulo} class="input" type="text" placeholder="ReiQueijão Vegano">
+    <Field label="Legenda">
+      <input bind:value={imagem.legenda} class="input" type="text" placeholder="ReiQueijão Vegano">
     </Field>
     <Field label="Imagem">
       <p class="control is-expanded">
@@ -88,36 +99,30 @@
           <progress class="progress is-small is-primary"></progress>
         </p>
       {/if}
-      {#if pagina.imagem}
+      {#if imagem.imagem}
        <br>
         <div>
-          <img width="300" src={pagina.imagem} alt=""/>
+          <img width="300" src={imagem.imagem} alt=""/>
         </div>
-        <button on:click={() => pagina.imagem = null}>
+        <button on:click={() => imagem.imagem = null}>
           Remover imagem
         </button>
       {/if}
     </Field>
-    <Field label="Linha de Apoio">
-      <input bind:value={pagina.linhaDeApoio} class="input" type="text" placeholder=" Feito de castanha de caju e aipim, cremoso e sem conservantes. ">
-    </Field>
-    <Field label="Destaque">
-      <input bind:value={pagina.destaque} class="input" type="text" placeholder="Quantidade: 268ml 👑 Valor: R$ 15,00">
-    </Field>
-    <Field label="Descrição Um">
-      <textarea bind:value={pagina.descricao1} class="textarea"></textarea>
-    </Field>
-    <Field label="Descrição Dois">
-      <textarea bind:value={pagina.descricao2} class="textarea"></textarea>
-    </Field>
     <div class="control has-text-right">
       <button
-        on:click={handleCreate}
+        on:click={handleEdit}
         class="button is-primary"
       >
-        Adicionar página
+        Editar Imagem
       </button>
     </div>
   </div>
-
 </Page>
+{/if}
+
+<style>
+  .error.notification {
+    padding: 10px;
+  }
+</style>
