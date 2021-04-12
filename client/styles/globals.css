@@ -1,16 +1,21 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+.navbar {
+  border-bottom: 3px solid #F6A32A;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.navbar-item img {
+  max-height: 100px;
+  height: 89px;
 }
 
-* {
-  box-sizing: border-box;
+.navbar-burger {
+  height: 105px;
+}
+
+.is-success {
+  background: #E1571D !important;
+}
+
+hr.styled {
+  background: url('/images/bg-title.png') !important;
+  height: 10px !important;
 }
