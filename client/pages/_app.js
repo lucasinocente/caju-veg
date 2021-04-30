@@ -3,7 +3,7 @@ import Head from 'next/head'
 import '../node_modules/bulma/bulma.sass'
 import '../styles/globals.css'
 
-const Caju = ({ Component, pageProps, pages }) => {
+const Caju = ({ Component, pageProps }) => {
   return (
     <>
       <Head>

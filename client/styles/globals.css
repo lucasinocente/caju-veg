@@ -42,3 +42,23 @@ hr.styled {
     text-align: left;
   }
 }
+
+@media screen and (min-width: 1005px) {
+  .navbar-item.is-hoverable:hover .navbar-dropdown {
+      display: block !important;
+  }
+  .navbar-item.is-hoverable:focus-within .navbar-dropdown {
+      display: none;
+  }
+}
+
+.principal-image {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.principal-image img {
+  max-width: 100%;
+}
