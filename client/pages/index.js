@@ -11,7 +11,7 @@ const Index = ({ pages }) => {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.VERCEL_URL}/api/paginas`);
+  const res = await fetch(`${process.env.SITE_URL}/api/paginas`);
   const json = await res.json();
 
   const pages = {
