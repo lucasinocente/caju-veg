@@ -33,7 +33,7 @@ const Nav = ({ pages }) => {
                 { pages.produtos.map(({ slug, titulo }) => {
                   return (
                     <Link href={`/${slug}`} key={slug}>
-                      <a className="navbar-item">
+                      <a className="navbar-item" onClick={handleMenu}>
                         { titulo }
                       </a>
                     </Link>
@@ -49,7 +49,7 @@ const Nav = ({ pages }) => {
               { pages.comoFunciona.map(({ slug, titulo }) => {
                   return (
                     <Link href={`/${slug}`} key={slug}>
-                      <a className="navbar-item">
+                      <a className="navbar-item" onClick={handleMenu}>
                         { titulo }
                       </a>
                     </Link>
