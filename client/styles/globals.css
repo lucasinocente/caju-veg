@@ -2,6 +2,10 @@
   border-bottom: 3px solid #F6A32A;
 }
 
+.navbar-dropdown {
+  border-top: 3px solid #F6A32A;
+}
+
 .navbar-item img {
   max-height: 100px;
   height: 89px;
@@ -18,4 +22,10 @@
 hr.styled {
   background: url('/images/bg-title.png') !important;
   height: 10px !important;
+}
+
+.has-dropdown .navbar-item {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  font-weight: bold;
 }

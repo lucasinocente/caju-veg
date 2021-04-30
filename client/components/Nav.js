@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-const Nav = () => {
-  const [isOpen, setOpen] = useState(false)
+const Nav = ({ pages }) => {
+  const [isOpen, setOpen] = useState(false);
 
   const handleMenu = () => {
     setOpen(!isOpen);
@@ -23,31 +23,43 @@ const Nav = () => {
             <span aria-hidden="true"></span>
           </a>
         </div>
-        <div class="navbar-menu has-text-centered" id="navbar-menu" className={isOpen ? 'is-flex' : 'is-hidden'}>
+        <div class="navbar-menu has-text-centered" id="navbar-menu" className={isOpen ? 'is-flex-desktop' : 'is-hidden'}>
           <div class="navbar-end">
-            <Link href="/como-funciona">
-              <a class="navbar-item">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Produtos
+              </a>
+              <div class="navbar-dropdown">
+                { pages.produtos.map(({ slug, titulo }) => {
+                  return (
+                    <Link href={`/${slug}`}>
+                      <a class="navbar-item">
+                        { titulo }
+                      </a>
+                    </Link>
+                  )
+                }) }
+              </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
                 Como funciona
               </a>
-            </Link>
+              <div class="navbar-dropdown">
+              { pages.comoFunciona.map(({ slug, titulo }) => {
+                  return (
+                    <Link href={`/${slug}`}>
+                      <a class="navbar-item">
+                        { titulo }
+                      </a>
+                    </Link>
+                  )
+                }) }
+              </div>
+            </div>
             <Link href="/">
               <a class="navbar-item">
                 Manifesto
-              </a>
-            </Link>
-            <Link href="/requeijao">
-              <a class="navbar-item">
-                Requeijão
-              </a>
-            </Link>
-            <Link href="/molho-vermelho-shock">
-              <a class="navbar-item">
-                Molho Vermelho Shock
-              </a>
-            </Link>
-            <Link href="/molho-caju">
-              <a class="navbar-item">
-                Molho Caju!
               </a>
             </Link>
           </div>
