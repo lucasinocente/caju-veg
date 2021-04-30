@@ -10,30 +10,30 @@ const Nav = ({ pages }) => {
 
   return (
     <>
-      <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+      <nav className="navbar is-light" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
           <Link href="/">
-            <a class="navbar-item">
+            <a className="navbar-item">
               <img src="/images/logo-caju-cozinha-independente-porto-alegre.png" alt="Caju Cozinha Independente" />
             </a>
           </Link>
-          <a onClick={handleMenu} role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <a onClick={handleMenu} role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
-        <div class="navbar-menu has-text-centered" id="navbar-menu" className={isOpen ? 'is-flex-desktop' : 'is-hidden'}>
-          <div class="navbar-end">
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
+        <div id="navbar-menu" className={`navbar-menu has-text-centered ${isOpen ? 'is-flex' : 'is-hidden'}`}>
+          <div className="navbar-end">
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">
                 Produtos
               </a>
-              <div class="navbar-dropdown">
+              <div className="navbar-dropdown">
                 { pages.produtos.map(({ slug, titulo }) => {
                   return (
-                    <Link href={`/${slug}`}>
-                      <a class="navbar-item">
+                    <Link href={`/${slug}`} key={slug}>
+                      <a className="navbar-item">
                         { titulo }
                       </a>
                     </Link>
@@ -41,15 +41,15 @@ const Nav = ({ pages }) => {
                 }) }
               </div>
             </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">
                 Como funciona
               </a>
-              <div class="navbar-dropdown">
+              <div className="navbar-dropdown">
               { pages.comoFunciona.map(({ slug, titulo }) => {
                   return (
-                    <Link href={`/${slug}`}>
-                      <a class="navbar-item">
+                    <Link href={`/${slug}`} key={slug}>
+                      <a className="navbar-item">
                         { titulo }
                       </a>
                     </Link>
@@ -58,7 +58,7 @@ const Nav = ({ pages }) => {
               </div>
             </div>
             <Link href="/">
-              <a class="navbar-item">
+              <a className="navbar-item">
                 Manifesto
               </a>
             </Link>

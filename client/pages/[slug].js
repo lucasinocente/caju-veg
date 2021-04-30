@@ -1,4 +1,4 @@
-import Home from '../components/Home'
+import Page from '../components/Page'
 import Nav from '../components/Nav'
 
 import { getAllPages } from '../helpers/content'
@@ -7,7 +7,7 @@ const Index = ({ pages }) => {
   return (
     <>
       <Nav pages={pages} />
-      <Home />
+      <Page />
     </>
   )
 }
@@ -22,4 +22,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default Index;
+export default Index
