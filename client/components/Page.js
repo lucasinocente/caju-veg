@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const Home = ({
+const Page = ({
   page: {
     titulo,
     destaque,
@@ -10,6 +10,7 @@ const Home = ({
     imagem,
     secao,
   },
+  images,
 }) => {
   const [image, setImage] = useState()
 
@@ -62,9 +63,23 @@ const Home = ({
             </div>
           </div>
         </div>
+        <div className="content">
+          <hr />
+          <h2 class="has-text-centered">Galeria</h2>
+          <p class="has-text-centered"><i>Imagens do requeijão vegano - Sugestões de uso - Fotos independentes</i></p>
+          <hr class="styled" />
+          <div class="gallery columns">
+            { images && images.map(({ imagem, legenda }) => (
+                <div class="column">
+                  <img src={imagem} alt={legenda} />
+                </div>
+              )
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-export default Home
+export default Page

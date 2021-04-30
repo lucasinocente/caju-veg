@@ -62,3 +62,11 @@ hr.styled {
 .principal-image img {
   max-width: 100%;
 }
+
+.column img {
+  max-width: 100%;
+}
+
+.gallery .column {
+  max-width: 33%;
+}

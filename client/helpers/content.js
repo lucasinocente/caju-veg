@@ -17,7 +17,15 @@ const getPageBySlug = async slug => {
   return json;
 }
 
+const getImagesByPageID = async pageID => {
+  const res = await fetch(`${process.env.SITE_URL}/api/imagens/${pageID}`);
+  const json = await res.json();
+
+  return json;
+}
+
 export {
   getAllPages,
   getPageBySlug,
+  getImagesByPageID,
 }
