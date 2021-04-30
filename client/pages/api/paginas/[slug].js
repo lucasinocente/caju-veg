@@ -2,8 +2,11 @@ import admin from '../../../helpers/firebase';
 const Firestore = admin.firestore();
 
 export default (req, res) => {
+  const { slug } = req.query;
+
   return Firestore
     .collection("paginas")
+    .where("slug", "==", slug)
     .get()
     .then(
       snap => {

@@ -78,6 +78,9 @@
     <Field label="Título">
       <input bind:value={pagina.titulo} class="input" type="text" placeholder="ReiQueijão Vegano">
     </Field>
+    <Field label="Slug">
+      <input bind:value={pagina.slug} class="input" type="text">
+    </Field>
     <Field label="Imagem">
       <p class="control is-expanded">
         <input bind:files on:change={handleUpload} class="input" type="file" accept="image/gif, image/jpeg">
