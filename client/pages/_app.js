@@ -21,7 +21,7 @@ const Caju = ({ Component, pageProps, pages }) => {
 Caju.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext);
 
-  const res = await fetch('http://localhost:3000/api/paginas');
+  const res = await fetch(`${process.env.VERCEL_URL}/api/paginas`);
   const json = await res.json();
 
   const pages = {
