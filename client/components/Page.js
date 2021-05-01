@@ -63,14 +63,14 @@ const Page = ({
             </div>
           </div>
         </div>
+        <hr />
         <div className="content">
-          <hr />
           <h2 class="has-text-centered">Galeria</h2>
           <p class="has-text-centered"><i>Imagens do requeijão vegano - Sugestões de uso - Fotos independentes</i></p>
           <hr class="styled" />
-          <div class="gallery columns">
+          <div class="gallery columns is-mobile is-multiline">
             { images && images.map(({ imagem, legenda }) => (
-                <div class="column">
+                <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
                   <img src={imagem} alt={legenda} />
                 </div>
               )
