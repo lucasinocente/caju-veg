@@ -66,3 +66,7 @@ hr.styled {
 .column img {
   max-width: 100%;
 }
+
+.modal-card-foot {
+  display: block;
+}

@@ -4,8 +4,6 @@ const Firestore = admin.firestore();
 export default (req, res) => {
   const { pageID } = req.query;
 
-  console.log(pageID)
-
   return Firestore
     .collection("imagens")
     .where("pagina.id", "==", pageID)
