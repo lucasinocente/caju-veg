@@ -67,7 +67,7 @@ const Page = ({
             </div>
           </div>
           {
-            images.lenght > 0 && (
+            images.length > 0 && (
               <div className="content">
                 <hr />
                 <h2 className="has-text-centered">Galeria</h2>
