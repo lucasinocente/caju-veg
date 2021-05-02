@@ -71,7 +71,7 @@ const Page = ({
               <div className="content">
                 <hr />
                 <h2 className="has-text-centered">Galeria</h2>
-                <p className="has-text-centered"><i>Imagens do requeijão vegano - Sugestões de uso - Fotos independentes</i></p>
+                <p className="has-text-centered"><i>Imagens do produto - Sugestões de uso</i></p>
                 <hr className="styled" />
                 <div className="gallery columns is-mobile is-multiline">
                   { images.map(({ imagem, legenda }) => (
