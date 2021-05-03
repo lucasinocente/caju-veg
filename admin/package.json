@@ -1,23 +1,33 @@
 {
-  "name": "svelte-app",
+  "name": "caju-fidelidade-admin",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear"
+    "start": "sirv public",
+    "deploy": "firebase use caju-fidelidade; npm run build; firebase deploy"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
-    "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "svelte": "^3.0.0"
+    "@rollup/plugin-commonjs": "11.0.2",
+    "@rollup/plugin-json": "^4.0.3",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-replace": "^2.4.2",
+    "bulma": "^0.8.2",
+    "dotenv": "^8.2.0",
+    "firebase": "^8.3.2",
+    "node-sass": "^4.13.1",
+    "rollup": "^1.20.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-postcss": "^2.9.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.0.0",
+    "svelte-icons": "^2.1.0",
+    "svelte-preprocess": "^3.7.4",
+    "svelte-spa-router": "^2.1.0"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.0"
+    "sirv-cli": "^0.4.4"
   }
 }
