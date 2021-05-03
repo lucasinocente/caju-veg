@@ -36,6 +36,14 @@ hr.styled {
   }
 }
 
+@media screen and (max-width: 770px) {
+  .modal-content,
+  .modal-card {
+    margin: 0;
+    padding: 0 10px;
+  }
+}
+
 @media screen and (max-width: 1005px) {
   .navbar-menu.is-flex .navbar-end {
     width: 100%;
