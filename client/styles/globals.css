@@ -78,3 +78,15 @@ hr.styled {
 .modal-card-foot {
   display: block;
 }
+
+.footer {
+  padding: 2rem 1.5rem 2rem;
+}
+
+.icon-footer {
+  font-size: 20px;
+  margin-left: 5px;
+  position: relative;
+  bottom: -3px;
+  color: #E1571D;
+}
