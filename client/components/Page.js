@@ -77,6 +77,7 @@ const Page = ({
                   { images.map(({ imagem, legenda }) => (
                       <div className="column is-full-mobile is-half-tablet is-one-third-desktop">
                         <img src={imagem} alt={legenda} />
+                        <h4 className="title-gallery">{legenda}</h4>
                       </div>
                     )
                   )}

@@ -90,3 +90,8 @@ hr.styled {
   bottom: -3px;
   color: #E1571D;
 }
+
+.title-gallery {
+  text-align: center;
+  margin-top: 10px;
+}
