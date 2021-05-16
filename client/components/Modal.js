@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { sendAnalyticsEvent } from '../helpers/analytics'
 
 const Modal = ({
   titulo,
@@ -7,6 +8,10 @@ const Modal = ({
 }) => {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState(1)
+
+  useEffect(() => {
+    isOpen && sendAnalyticsEvent('Abre Modal Pedido', `Abre Modal Pedido ${titulo}`, window)
+  }, [isOpen]);
 
   const buildMessage = ({ name, quantity }) => {
     return `Oiê Caju! ${ name
@@ -21,6 +26,8 @@ const Modal = ({
       name,
       quantity,
     });
+
+    sendAnalyticsEvent('Realiza Pedido', `Realiza Pedido ${titulo}`, window)
 
     return window.location.href =
       `https://${
