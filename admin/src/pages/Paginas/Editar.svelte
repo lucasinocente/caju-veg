@@ -78,6 +78,9 @@
     <Field label="Título">
       <input bind:value={pagina.titulo} class="input" type="text" placeholder="ReiQueijão Vegano">
     </Field>
+    <Field label="Preço">
+      <input bind:value={pagina.preco} class="input" type="text" placeholder="15">
+    </Field>
     <Field label="Slug">
       <input bind:value={pagina.slug} class="input" type="text">
     </Field>
