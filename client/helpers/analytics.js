@@ -10,7 +10,7 @@ const sendAnalyticsEvent = (event, label, window) => {
 }
 
 const sendAnalyticsPageView = (page_path, window) => {
-  return window.gtag('config', analyticsUA, { page_path })
+  return isProd && window.gtag('config', analyticsUA, { page_path })
 }
 
 const analyticsHtml = `
