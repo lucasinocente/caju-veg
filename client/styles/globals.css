@@ -95,3 +95,11 @@ hr.styled {
   text-align: center;
   margin-top: 10px;
 }
+
+.navbar-item.is-clean:hover {
+  background: inherit;
+}
+
+.navbar-item .button:hover {
+  background: #CB4D18 !important;
+}

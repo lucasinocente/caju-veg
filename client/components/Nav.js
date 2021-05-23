@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Pedidos from './Pedidos'
 
 const Nav = ({ pages }) => {
   const [isOpen, setOpen] = useState(false);
+  const [isOpenPedidos, setPedidos] = useState(false);
 
   const handleMenu = () => {
     setOpen(!isOpen);
@@ -62,9 +64,19 @@ const Nav = ({ pages }) => {
                 Manifesto
               </a>
             </Link>
+            <a className="navbar-item is-clean" onClick={() => setPedidos(true)}>
+              <span className="button is-success">
+                Encomende aqui
+              </span>
+            </a>
           </div>
         </div>
       </nav>
+      <Pedidos
+        isOpen={isOpenPedidos}
+        produtos={pages.produtos}
+        onClose={() => setPedidos(false)}
+      />
     </>
   )
 }

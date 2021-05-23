@@ -74,8 +74,8 @@ const Page = ({
                 <p className="has-text-centered"><i>Imagens do produto - Sugestões de uso</i></p>
                 <hr className="styled" />
                 <div className="gallery columns is-mobile is-multiline">
-                  { images.map(({ imagem, legenda }) => (
-                      <div className="column is-full-mobile is-half-tablet is-one-third-desktop">
+                  { images.map(({ id, imagem, legenda }) => (
+                      <div key={id} className="column is-full-mobile is-half-tablet is-one-third-desktop">
                         <img src={imagem} alt={legenda} />
                         <h4 className="title-gallery">{legenda}</h4>
                       </div>
